@@ -1399,12 +1399,12 @@ Intersection.intersectLineLine = function(a1, a2, b1, b2) {
 
         if ( 0 <= ua && ua <= 1 && 0 <= ub && ub <= 1 ) {
             result = new Intersection("Intersection");
-            /*result.points.push(
+            result.points.push(
                 new Point(
                     a1.x + ua * (a2.x - a1.x),
                     a1.y + ua * (a2.y - a1.y)
                 )
-            );*/
+            );
         } else {
             result = new Intersection("No Intersection");
         }
@@ -1433,14 +1433,15 @@ Intersection.intersectLinePolygon = function(a1, a2, points) {
         var b1 = points[i];
         var b2 = points[(i+1) % length];
         var inter = Intersection.intersectLineLine(a1, a2, b1, b2);
-        if (inter.status=="Intersection") {
-            result.status = "Intersection";
-            break;
-        }
-        //result.appendPoints(inter.points);
+        /*if (inter.status=="Intersection") {
+         result.status = "Intersection";
+         result.points = inter.points;
+         break;
+         }*/
+        result.appendPoints(inter.points);
     }
 
-    //if ( result.points.length > 0 ) result.status = "Intersection";
+    if ( result.points.length > 0 ) result.status = "Intersection";
 
     return result;
 };
