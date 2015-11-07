@@ -1400,10 +1400,10 @@ Intersection.intersectLineLine = function(a1, a2, b1, b2) {
         if ( 0 <= ua && ua <= 1 && 0 <= ub && ub <= 1 ) {
             result = new Intersection("Intersection");
             result.points.push(
-                new Point(
-                    a1.x + ua * (a2.x - a1.x),
-                    a1.y + ua * (a2.y - a1.y)
-                )
+                {
+                    x: a1.x + ua * (a2.x - a1.x),
+                    y: a1.y + ua * (a2.y - a1.y)
+                }
             );
         } else {
             result = new Intersection("No Intersection");
